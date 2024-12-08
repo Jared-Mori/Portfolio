@@ -13,14 +13,28 @@ header {
 header nav ul {
     list-style: none;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between; /* Adjust to space between items */
     padding: 0;
     margin: 0;
+    align-items: center; /* Center items vertically */
+}
+
+header nav ul li {
+    margin-right: 15px; /* Space between nav buttons */
 }
 
 header nav ul li a {
     color: white;
     text-decoration: none;
+}
+
+header .home-icon {
+    margin-right: auto; /* Push the home icon to the left */
+}
+
+header .nav-items {
+    display: flex;
+    align-items: center;
 }
 
 .intro {
