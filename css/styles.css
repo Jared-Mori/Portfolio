@@ -8,6 +8,8 @@ header {
     background-color: #333;
     color: white;
     padding: 10px 20px;
+    box-sizing: border-box; /* Ensure padding is included in the element's total width and height */
+    width: 100%; /* Ensure the header spans the full width */
 }
 
 header nav ul {
