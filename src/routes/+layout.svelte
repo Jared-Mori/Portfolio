@@ -23,23 +23,52 @@
 <footer>
     <p>© 2025 Jared Mori</p>
     <div class="footer-links">
-    <a href="https://github.com/Jared-Mori" target="_blank" rel="noopener">
-        <img src="GithubLogo.png" alt="GitHub" class="footer-icon" />
-    </a>
-    <a href="https://www.linkedin.com/in/jared-mori-a4ba52340/" target="_blank" rel="noopener">
-        <img src="LinkedInLogo.png" alt="LinkedIn" class="footer-icon" />
-    </a>
-</div>
+        <a href="https://github.com/Jared-Mori" target="_blank" rel="noopener">
+            <img src="GithubLogo.png" alt="GitHub" class="footer-icon" />
+        </a>
+        <a href="https://www.linkedin.com/in/jared-mori-a4ba52340/" target="_blank" rel="noopener">
+            <img src="LinkedInLogo.png" alt="LinkedIn" class="footer-icon" />
+        </a>
+    </div>
 </footer>
 
 <style>
+    :root {
+        --background: #f0fff1;
+        --header: #621708;
+        --sub-header: #ac171c;
+        --text: #c9070e;
+        --footer-bg: #621708;
+        --footer-text: #fff;
+        --footer-icon: brightness(0) invert(1);
+        --tag-bg: #f6aa1c;
+        --tag-text: #220901;
+        --grid-bg: #AEC8A4;
+        --grid-line: #798b71;
+        --sidebar-bg: #ba181b;
+        --sidebar-text: #fff;
+    }
+    :global(body.dark) {
+        --background: #f0fff1;
+        --header: #621708;
+        --text: #c9070e;
+        --footer-bg: #621708;
+        --footer-text: #fff;
+        --footer-icon: brightness(1) invert(0.2);
+        --tag-bg: #f6aa1c;
+        --tag-text: #220901;
+        --grid-bg: #E3EEB2;
+        --grid-line: #b8c28d;
+        --sidebar-bg: #ba181b;
+        --sidebar-text: #fff;
+    }
     nav {
         position: fixed;
         top: 0;
         left: 0;
-        width: 100%;
         padding: 1rem;
         z-index: 10;
+        background: none;
     }
     .darkmode-toggle {
         border: none;
@@ -54,8 +83,8 @@
         left: 0;
         max-width: 100%;
         padding: 1rem;
-        background-color: #023047;
-        color: white;
+        background-color: var(--footer-bg);
+        color: var(--footer-text);
         text-align: center;
         font-family: 'Poppins', sans-serif;
         font-weight: 300;
@@ -77,7 +106,7 @@
         width: 32px;
         height: 32px;
         vertical-align: middle;
-        filter: brightness(0) invert(1);
+        filter: var(--footer-icon);
         transition: filter 0.2s;
     }
     .footer-icon:hover {

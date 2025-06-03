@@ -21,7 +21,7 @@
 
 <style>
 .project-card {
-    background: #f0fff1;
+    background: var(--background);
     border-radius: 12px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.459);
     padding: 1rem;
@@ -39,16 +39,16 @@
     transform: translateY(-8px) scale(1.02);
 }
 .project-card h3 {
-    color: #660708;
+    color: var(--header);
     margin: 0 0 0.5rem 0;
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
     font-style: normal;
-    font-size: 3rem;
+    font-size: 2.8rem;
     line-height: 1;
 }
 .project-card p {
-    color: #a4161a;
+    color: var(--text);
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
     font-style: normal;

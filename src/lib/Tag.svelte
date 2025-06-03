@@ -10,9 +10,9 @@
     .tag {
         display: inline-block;
         padding: 0.25rem .5rem;
-        background-color: #f6aa1c;
+        background-color: var(--tag-bg);
         border-radius: 6px;
-        color: #220901;
+        color: var(--tag-text);
         margin-right: 0.5rem;
         margin-bottom: 0.5rem;
         font-family: 'Poppins', sans-serif;
