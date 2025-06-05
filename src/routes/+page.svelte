@@ -1,17 +1,15 @@
 <script lang="ts">
     import ProjectCard from '$lib/ProjectCard.svelte';
+    import AboutSection from '$lib/AboutSection.svelte';
+    import Resume from '$lib/Resume.svelte';
+    import Contact from '$lib/Contact.svelte';
     import { draggable } from '@neodrag/svelte';
 
     let projects = [
-        { id: 0, title: "Torch the Deck", description: "Desc 1", link: "/project1", tags: ["svelte", "frontend"] },
-        { id: 1, title: "Project 2", description: "Desc 2", link: "/project2", tags: ["TypeScript", "API"] },
-        { id: 2, title: "Project 3", description: "Desc 3", link: "/project3", tags: ["Node.js", "Backend"] },
-        { id: 3, title: "Project 4", description: "Desc 4", link: "/project4", tags: ["Python", "ML"] },
-        { id: 4, title: "Project 5", description: "Desc 5", link: "/project5", tags: ["React", "UI"] },
-        { id: 5, title: "Project 6", description: "Desc 6", link: "/project6", tags: ["Go", "API"] },
-        { id: 6, title: "Project 7", description: "Desc 7", link: "/project7", tags: ["C++", "Performance"] },
-        { id: 7, title: "Project 8", description: "Desc 8", link: "/project8", tags: ["Rust", "Systems"] },
-        { id: 8, title: "Project 9", description: "Desc 9", link: "/project9", tags: ["SQL", "Database"] }
+        { id: 0, title: "Torch the Deck", description: "A 2D Rogue-like card game built in Unity. Explore a dungeon as you collect and equip different cards, battle enemies, and discover treasure.", link: "https://github.com/Jared-Mori/TorchTheDeck", tags: ["Unity", "C#"] },
+        { id: 1, title: "Japanese Web", description: "A site hosting a variety of small webgames, focused around learning Japanese. Practice counters, matching vocabulary to everyday objects, and more.", link: "https://github.com/Jared-Mori/JapaneseWebGame", tags: ["Svelte", "Full-Stack"] },
+        { id: 2, title: "Taskly", description: "Combine calendars, events, and todo lists to layout all of your future plans.", link: "https://github.com/Peterchauu/CPSC449-Project", tags: ["React", "Firebase"] },
+        { id: 3, title: "Portfolio", description: "This portfolio site! Built with Svelte and TypeScript, showcasing my projects and skills.", link: "/portfolio", tags: ["Svelte", "TypeScript"] },
     ];
 
     let positions = [
@@ -62,24 +60,24 @@
 
 <div class="introduction">
 
-    <div class="sidebar {sidebarOne ? 'open' : ''}">
-        <button id ="sidebar-one"  class="sidebar-toggle" aria-label="Toggle sidebar" on:click={() => sidebarOne = !sidebarOne}>ABOUT</button>
+    <div id ="sidebar-one" class="sidebar {sidebarOne ? 'open' : ''}">
+        <button id="About" class="sidebar-toggle" aria-label="Toggle sidebar" on:click={() => sidebarOne = !sidebarOne}>ABOUT</button>
         <div class="sidebar-content">
-            <p>Welcome to the sidebar! Click the button to toggle visibility.</p>
+            <AboutSection headshotSrc="/JaredPhoto.png"/>
         </div>
     </div>
 
-    <div class="sidebar {sidebarTwo ? 'open' : ''}">
-        <button id="sidebar-two" class="sidebar-toggle" aria-label="Toggle sidebar" on:click={() => sidebarTwo = !sidebarTwo}>RESUME</button>
+    <div id="sidebar-two" class="sidebar {sidebarTwo ? 'open' : ''}">
+        <button id="Resume" class="sidebar-toggle" aria-label="Toggle sidebar" on:click={() => sidebarTwo = !sidebarTwo}>RESUME</button>
         <div class="sidebar-content">
-            <p>Welcome to the sidebar! Click the button to toggle visibility.</p>
+            <Resume />
         </div>
     </div>
 
-    <div class="sidebar {sidebarThree ? 'open' : ''}">
-        <button id="sidebar-three" class="sidebar-toggle" aria-label="Toggle sidebar" on:click={() => sidebarThree = !sidebarThree}>CONTACT</button>
+    <div id="sidebar-three" class="sidebar {sidebarThree ? 'open' : ''}">
+        <button id="Contact" class="sidebar-toggle" aria-label="Toggle sidebar" on:click={() => sidebarThree = !sidebarThree}>CONTACT</button>
         <div class="sidebar-content">
-            <p>Welcome to the sidebar! Click the button to toggle visibility.</p>
+            <Contact />
         </div>
     </div>
 
@@ -91,79 +89,85 @@
             <h2 class="header2">Web Developer</h2>
         </div>
         <div class="about-blurb">
-            <p>a short blurb about me and what I want to do</p>
+            <p>Building clean, functional software and web experiences with modern tools and thoughtful code.</p>
         </div>
     </div>
 </div>
 
-<div
-    class="projects-grid"
-    style="height: {gridHeight}px;"
->
-    {#each projects as project, i}
-        {#if project}
-            <div 
-                class="grid-slot" 
-                data-index={i} 
-                use:draggable={{ 
-                    bounds: 'parent', 
-                    grid: [50, 50], 
-                    defaultPosition: getStartPosition(project.id), 
-                    onDrag: ({ offsetX, offsetY }) => {positions[project.id] = { x: offsetX, y: offsetY };
-            }}}>
-                <ProjectCard {...project} />
-                <!-- Vertical line -->
-                {#if getConnectorHeight(i) < 0}
-                    <!-- Draw upwards: position SVG so its bottom is at the center -->
+<div class="projects-title-section">
+    <h2>IN THE WORKS</h2>
+</div>
+
+<div class="projects-grid-bar">
+    <div
+        class="projects-grid"
+        style="height: {gridHeight}px;"
+    >
+        {#each projects as project, i}
+            {#if project}
+                <div 
+                    class="grid-slot" 
+                    data-index={i} 
+                    use:draggable={{ 
+                        bounds: 'parent', 
+                        grid: [50, 50], 
+                        defaultPosition: getStartPosition(project.id), 
+                        onDrag: ({ offsetX, offsetY }) => {positions[project.id] = { x: offsetX, y: offsetY };
+                }}}>
+                    <ProjectCard {...project} />
+                    <!-- Vertical line -->
+                    {#if getConnectorHeight(i) < 0}
+                        <!-- Draw upwards: position SVG so its bottom is at the center -->
+                        <svg
+                            class="slot-line"
+                            width="3"
+                            height={Math.abs(getConnectorHeight(i))}
+                            style="position:absolute; left:50%; top:calc(50% - {Math.abs(getConnectorHeight(i))}px); transform:translateX(-50%); pointer-events:none;"
+                        >
+                            <line x1="0" y1={Math.abs(getConnectorHeight(i))} x2="0" y2="0" stroke="#540b0e" stroke-width="10" stroke-linecap="round" />
+                        </svg>
+                    {:else}
+                        <!-- Draw downwards: position SVG so its top is at the center -->
+                        <svg
+                            class="slot-line"
+                            width="3"
+                            height={getConnectorHeight(i)}
+                            style="position:absolute; left:50%; top:50%; transform:translateX(-50%); pointer-events:none;"
+                        >
+                            <line x1="0" y1="0" x2="0" y2={getConnectorHeight(i)} stroke="#540b0e" stroke-width="10" stroke-linecap="round" />
+                        </svg>
+                    {/if}
+                    <!-- Horizontal line, starts at the end of the vertical line -->
+                    {#if getConnectorWidth(i) < 0}
+                        <svg
+                            class="slot-line"
+                            width={Math.abs(getConnectorWidth(i))}
+                            height="3"
+                            style="position:absolute; left:calc(50% - {Math.abs(getConnectorWidth(i))}px); top:{getHorizontalLineTop(i)}; transform:translateX(0); pointer-events:none;"
+                        >
+                            <line x1={Math.abs(getConnectorWidth(i))} y1="1.5" x2={-5} y2="1.5" stroke="#540b0e" stroke-width="10" stroke-linecap="round" />
+                        </svg>
+                    {:else}
+                        <svg
+                            class="slot-line"
+                            width={getConnectorWidth(i)}
+                            height="3"
+                            style="position:absolute; left:50%; top:{getHorizontalLineTop(i)}; transform:translateX(0); pointer-events:none;"
+                        >
+                            <line x1={-5} y1="1.5" x2={getConnectorWidth(i)} y2="1.5" stroke="#540b0e" stroke-width="10" stroke-linecap="round" />
+                        </svg>
+                    {/if}
                     <svg
-                        class="slot-line"
-                        width="3"
-                        height={Math.abs(getConnectorHeight(i))}
-                        style="position:absolute; left:50%; top:calc(50% - {Math.abs(getConnectorHeight(i))}px); transform:translateX(-50%); pointer-events:none;"
+                        width="16"
+                        height="16"
+                        style="position:absolute; left:50%; top:{getHorizontalLineTop(i)}; transform:translate(-50%, -50%); pointer-events:none; z-index:-1;"
                     >
-                        <line x1="0" y1={Math.abs(getConnectorHeight(i))} x2="0" y2="0" stroke="#540b0e" stroke-width="10" stroke-linecap="round" />
+                        <circle cx="8" cy="8" r="6" fill="#540b0e" />
                     </svg>
-                {:else}
-                    <!-- Draw downwards: position SVG so its top is at the center -->
-                    <svg
-                        class="slot-line"
-                        width="3"
-                        height={getConnectorHeight(i)}
-                        style="position:absolute; left:50%; top:50%; transform:translateX(-50%); pointer-events:none;"
-                    >
-                        <line x1="0" y1="0" x2="0" y2={getConnectorHeight(i)} stroke="#540b0e" stroke-width="10" stroke-linecap="round" />
-                    </svg>
-                {/if}
-                <!-- Horizontal line, starts at the end of the vertical line -->
-                {#if getConnectorWidth(i) < 0}
-                    <svg
-                        class="slot-line"
-                        width={Math.abs(getConnectorWidth(i))}
-                        height="3"
-                        style="position:absolute; left:calc(50% - {Math.abs(getConnectorWidth(i))}px); top:{getHorizontalLineTop(i)}; transform:translateX(0); pointer-events:none;"
-                    >
-                        <line x1={Math.abs(getConnectorWidth(i))} y1="1.5" x2={-5} y2="1.5" stroke="#540b0e" stroke-width="10" stroke-linecap="round" />
-                    </svg>
-                {:else}
-                    <svg
-                        class="slot-line"
-                        width={getConnectorWidth(i)}
-                        height="3"
-                        style="position:absolute; left:50%; top:{getHorizontalLineTop(i)}; transform:translateX(0); pointer-events:none;"
-                    >
-                        <line x1={-5} y1="1.5" x2={getConnectorWidth(i)} y2="1.5" stroke="#540b0e" stroke-width="10" stroke-linecap="round" />
-                    </svg>
-                {/if}
-                <svg
-                    width="16"
-                    height="16"
-                    style="position:absolute; left:50%; top:{getHorizontalLineTop(i)}; transform:translate(-50%, -50%); pointer-events:none; z-index:-1;"
-                >
-                    <circle cx="8" cy="8" r="6" fill="#540b0e" />
-                </svg>
-            </div>
-        {/if}
-    {/each}
+                </div>
+            {/if}
+        {/each}
+    </div>
 </div>
 
 <style>
@@ -191,6 +195,20 @@
         min-width: 40%;
         max-width: 60%;
         gap: 5rem;
+    }
+    .projects-title-section {
+        width: 100%;
+        height: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 2;
+        background-color: var(--about-bg);
+        color: var(--background);
+        font-family: 'Poppins', sans-serif;
+        font-weight: 600;
+        font-style: normal;
+        font-size: 4rem;
     }
     .headers {
         display: flex;
@@ -247,6 +265,8 @@
             linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
         background-size: 50px 50px;
         position: relative;
+        overflow-x: auto;
+        overflow-y: hidden;
     }
     .grid-slot {
         position: relative;
@@ -264,32 +284,31 @@
         position: absolute;
         display: flex;
         flex-direction: column;
-        right: -73%;
-        width: 73%;
+        right: -94%;
+        width: 100%;
         height: 100%;
         background-color: var(--sidebar-bg);
         transition: right 0.3s;
-        z-index: 2;
-    }
-    .sidebar.open {
-        right: 0;
+        z-index: 3;
     }
     .sidebar-content {
-        flex: 1;
         display: flex;
-        align-items: center;
+        flex-direction: column;
+        align-items: flex-end;
         justify-content: center;
+        min-width: 970px;
+        margin-right: 15%;
         z-index: 1;
         color: var(--sidebar-text);
     }
     .sidebar-toggle {
         position: absolute;
-        background-color: var(--sidebar-bg);
+        background-color: var(--grid-bg);
         top: 0;
         bottom: 0;
         border: none;
         cursor: pointer;
-        z-index: 3;
+        z-index: 2;
         box-shadow: -6px 0 6px rgba(0,0,0,0.2);
         transition: box-shadow 0.2s;
         font-family: 'Poppins', sans-serif;
@@ -297,7 +316,7 @@
         font-style: normal;
         font-size: 4rem;
         max-width: 400px;
-        color: var(--background);
+        color: var(--header);
         writing-mode: vertical-rl;
         text-orientation: upright;
         display: flex;
@@ -310,23 +329,42 @@
         padding-right: 1rem;
         padding-left: 1rem;
     }
-    @media (max-width: 1200px) {
-        .sidebar-toggle {
-            padding-left: 0;
-        }
-    }
     #sidebar-one {
-        left: -27%;
-        width: 27%;
+        right: -82%;
     }
     #sidebar-two {
-        left: -18%;
-        width: 18%;
-        padding-top: 6.6rem;
+        right: -88%;
     }
     #sidebar-three {
-        left: -9%;
-        width: 9%;
+        right: -94%;
+    }
+    #sidebar-one.open {
+        right: 0;
+    }
+    #sidebar-two.open {
+        right: -6%;
+    }
+    #sidebar-three.open {
+        right: -12%;
+    }
+    @media (max-width: 1200px) {
+        #sidebar-one.open {
+            right: 0;
+        }
+        #sidebar-two.open {
+            right: 0;
+        }
+        #sidebar-three.open {
+            right: 0;
+        }
+    }
+    #About {
+        padding-top: 1.5rem;
+    }
+    #Resume {
+        padding-top: 6.6rem;
+    }
+    #Contact {
         padding-top: 12.3rem;
     }
     .sidebar-toggle:hover {

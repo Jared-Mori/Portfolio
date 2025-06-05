@@ -47,6 +47,8 @@
         --grid-line: #798b71;
         --sidebar-bg: #ba181b;
         --sidebar-text: #fff;
+        --about-bg: #720f12;
+        --about-bg-hover: #881317;
     }
     :global(body.dark) {
         --background: #f0fff1;
@@ -61,6 +63,8 @@
         --grid-line: #b8c28d;
         --sidebar-bg: #ba181b;
         --sidebar-text: #fff;
+        --about-bg: #720f12;
+        --about-bg-hover: #881317;
     }
     nav {
         position: fixed;
@@ -73,6 +77,7 @@
     .darkmode-toggle {
         border: none;
         padding: 0;
+        margin-top: -0.8rem;
         cursor: pointer;
         background: none;
         filter: invert(13%) sepia(98%) saturate(2000%) hue-rotate(353deg) brightness(55%) contrast(120%);
