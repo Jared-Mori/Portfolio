@@ -4,6 +4,7 @@
     export let description: string;
     export let tags: string[] = [];
     export let link: string;
+    export let github: string;
 </script>
 
 <div class="project-card">
@@ -14,9 +15,18 @@
             <Tag title={tag} />
         {/each}
     </div>
-    <a class="project-link-btn" href={link} target="_blank" rel="noopener">
-        <img src="/link.svg" alt="View Project" class="project-link-img" />
-    </a>
+    <div class="links">
+        <a class="project-link-btn" href={link} target="_blank" rel="noopener">
+            {#if link}
+                <img src="/link.svg" alt="View Project" class="project-link-img" />
+            {/if}
+        </a>
+            <a class="project-link-btn" href={link} target="_blank" rel="noopener">
+            {#if github}
+                <img src="/GithubLogo.png" alt="View Github" class="github-link-img" />
+            {/if}
+        </a>
+    </div>
 </div>
 
 <style>
@@ -66,18 +76,33 @@
     margin-top: auto;
     justify-content: flex-end;
 }
-.project-link-btn {
+.links {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
     position: absolute;
-    top: 1rem;
-    right: 1rem;
+    bottom: 1rem;
+    left: 1rem;
+    right: auto;
+    top: auto;
+    z-index: 2;
+}
+.project-link-btn {
     padding: 0.4rem;
     border-radius: 15px;
-    z-index: 2;
     display: flex;
     align-items: center;
     justify-content: center;
+    background: none;
+    border: none;
 }
 .project-link-img {
+    width: 24px;
+    height: 24px;
+    display: block;
+    transition: transform 0.4s ease filter 0.4s ease;
+}
+.github-link-img {
     width: 24px;
     height: 24px;
     display: block;

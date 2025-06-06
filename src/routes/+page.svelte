@@ -6,10 +6,10 @@
     import { draggable } from '@neodrag/svelte';
 
     let projects = [
-        { id: 0, title: "Torch the Deck", description: "A 2D Rogue-like card game built in Unity. Explore a dungeon as you collect and equip different cards, battle enemies, and discover treasure.", link: "https://github.com/Jared-Mori/TorchTheDeck", tags: ["Unity", "C#"] },
-        { id: 1, title: "Japanese Web", description: "A site hosting a variety of small webgames, focused around learning Japanese. Practice counters, matching vocabulary to everyday objects, and more.", link: "https://github.com/Jared-Mori/JapaneseWebGame", tags: ["Svelte", "Full-Stack"] },
-        { id: 2, title: "Taskly", description: "Combine calendars, events, and todo lists to layout all of your future plans.", link: "https://github.com/Peterchauu/CPSC449-Project", tags: ["React", "Firebase"] },
-        { id: 3, title: "Portfolio", description: "This portfolio site! Built with Svelte and TypeScript, showcasing my projects and skills.", link: "/portfolio", tags: ["Svelte", "TypeScript"] },
+        { id: 0, title: "Torch the Deck", description: "A 2D Rogue-like card game built in Unity. Explore a dungeon as you collect and equip different cards, battle enemies, and discover treasure.", link: "", github: "https://github.com/Jared-Mori/TorchTheDeck", tags: ["Unity", "C#"] },
+        { id: 1, title: "Japanese Web", description: "A site hosting a variety of small webgames, focused around learning Japanese. Practice counters, matching vocabulary to everyday objects, and more.", link: "https://www.jaredmori.dev/", github: "https://github.com/Jared-Mori/JapaneseWebGame", tags: ["Svelte", "Full-Stack"] },
+        { id: 2, title: "Taskly", description: "Combine calendars, events, and todo lists to layout all of your future plans.", link: "", github: "https://github.com/Peterchauu/CPSC449-Project", tags: ["React", "Firebase"] },
+        { id: 3, title: "Portfolio", description: "This portfolio site! Built with Svelte and TypeScript, showcasing my projects and skills.", link: "jaredmori.dev", github: "https://github.com/Jared-Mori/Portfolio", tags: ["Svelte", "TypeScript"] },
     ];
 
     let positions = [

@@ -1,10 +1,23 @@
 <script lang="ts">
-    const education = "Graduated 2025 with a Bachelors of Science in Computer Science from California State University, Fullerton.";
-    const softSkills = "Your soft skills here.";
-    const hardSkills = "Your hard skills here.";
-    const profile = "Recent Computer Science graduate with hands-on experience developing C++ and Python applications during an internship at Lockheed Martin. Also experienced in web development through personal and academic projects. Skilled in software engineering, version control, and collaborative development. Eager to contribute to impactful software and web-based projects in a dynamic, team-focused environment.";
+    import { copy } from 'svelte-copy';
+    let emailCopyMessage = '';
+    let phoneCopyMessage = '';
+    let emailCopyTimeout: ReturnType<typeof setTimeout>;
+    let phoneCopyTimeout: ReturnType<typeof setTimeout>;
 
-    const experience = "Your experience details here.";
+    function showEmailCopyMessage(msg: string) {
+        emailCopyMessage = msg;
+        clearTimeout(emailCopyTimeout);
+        emailCopyTimeout = setTimeout(() => emailCopyMessage = '', 2000);
+    }
+    function showPhoneCopyMessage(msg: string) {
+        phoneCopyMessage = msg;
+        clearTimeout(phoneCopyTimeout);
+        phoneCopyTimeout = setTimeout(() => phoneCopyMessage = '', 2000);
+    }
+    const email = "jared@mori.us";
+    const phone = "310-801-5171";
+    const profile = "Recent Computer Science graduate with hands-on experience developing C++ and Python applications during an internship at Lockheed Martin. Also experienced in web development through personal and academic projects. Skilled in software engineering, version control, and collaborative development. Eager to contribute to impactful software and web-based projects in a dynamic, team-focused environment.";
 </script>
 
 <div class="resume-container">
@@ -13,18 +26,50 @@
             <h2>CONTACT</h2>
             <hr class="resume-divider" />
             <div class="contact-links-row">
-                <a href="mailto:your@email.com" target="_blank" rel="noopener" class="contact-link">
-                    <img src="/email.svg" alt="Email" />
-                </a>
+                <div class="copy-btn-container" style="position: relative; display: inline-block;">
+                    {#if emailCopyMessage}
+                        <div class="copy-toast">{emailCopyMessage}</div>
+                    {/if}
+                    <button class="contact-link"
+                        use:copy={{
+                            text: email,
+                            events: ['click'],
+                            onCopy({ text }) {
+                                showEmailCopyMessage(`Copied: ${text}`);
+                            },
+                            onError({ error }) {
+                                showEmailCopyMessage(error.message);
+                            }
+                        }}
+                    >
+                        <img src="/email.svg" alt="Email" />
+                    </button>
+                </div>
                 <a href="https://github.com/Jared-Mori" target="_blank" rel="noopener" class="contact-link">
                     <img src="/GithubLogo.png" alt="GitHub" />
                 </a>
                 <a href="https://www.linkedin.com/in/jared-mori-a4ba52340/" target="_blank" rel="noopener" class="contact-link">
                     <img src="/LinkedInLogo.png" alt="LinkedIn" />
                 </a>
-                <a href="/resume.pdf" target="_blank" rel="noopener" class="contact-link">
-                    <img src="/phone.svg" alt="Resume PDF" />
-                </a>
+                <div class="copy-btn-container" style="position: relative; display: inline-block;">
+                    {#if phoneCopyMessage}
+                        <div class="copy-toast">{phoneCopyMessage}</div>
+                    {/if}
+                    <button class="contact-link"
+                        use:copy={{
+                            text: phone,
+                            events: ['click'],
+                            onCopy({ text }) {
+                                showPhoneCopyMessage(`Copied: ${text}`);
+                            },
+                            onError({ error }) {
+                                showPhoneCopyMessage(error.message);
+                            }
+                        }}
+                    >
+                        <img src="/phone.svg" alt="Phone" />
+                    </button>
+                </div>
             </div>
         </div>
         <div class="resume-section">
@@ -208,7 +253,7 @@
     padding-right: 1rem;
 }
 .column-two-content p {
-    font-size: 1rem;
+    font-size: 1.1rem;
     margin: 0.2rem 0;
     text-align: left;
 }
@@ -224,7 +269,7 @@
     margin-bottom: 0;
 }
 .column-two-content li {
-    font-size: .7rem;
+    font-size: .9rem;
     text-align: left;
     margin-bottom: 0.2rem;
 }
@@ -243,8 +288,7 @@
 .resume-section.work-experience .column-two-content {
     height: 330px;
     overflow-y: auto;
-    width: 80%;
-    margin-left: 2rem;
+    width: 100%;
     background-color: rgba(156, 51, 51, 0.459);
 }
 .resume-section.work-experience .column-two-content::-webkit-scrollbar {
@@ -252,7 +296,7 @@
     border-radius: 4px;
 }
 .resume-section.work-experience .column-two-content::-webkit-scrollbar-thumb {
-    background: var(--sub-header);
+    background: var(--about-bg);
     border-radius: 4px;
 }
 .resume-section.work-experience .column-two-content::-webkit-scrollbar-thumb:hover {
@@ -280,6 +324,14 @@
     object-fit: cover;
     filter: invert(97%) sepia(6%) saturate(300%) hue-rotate(62deg) brightness(104%) contrast(97%);
 }
+button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    height: 32px;
+    width: 32px;
+}
 .download-resume-btn {
     display: inline-block;
     margin: 2rem auto 0 auto;
@@ -299,5 +351,25 @@
 }
 .download-resume-btn:hover {
     background: var(--about-bg-hover);
+}
+.copy-toast {
+    position: absolute;
+    bottom: 110%; /* Place just above the button */
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--about-bg, #720f12);
+    color: #fff;
+    padding: 0.8rem 2rem;
+    border-radius: 8px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    z-index: 1000;
+    animation: fadein 0.2s;
+    white-space: nowrap;
+}
+@keyframes fadein {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 </style>
