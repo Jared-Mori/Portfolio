@@ -79,9 +79,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--background);
+    background: var(--sub-header);
     border-radius: 50%;
-    box-shadow: 0 0 0 8px var(--background);
+    box-shadow: 0 0 0 8px var(--sub-header);
     margin-bottom: 2rem;
     overflow: hidden;
 }
@@ -90,7 +90,7 @@
     height: 100%;
     object-fit: cover;
     border-radius: 50%;
-    border: 4px solid var(--background);
+    border: 4px solid var(--sub-header);
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     display: block;
 }
@@ -106,14 +106,14 @@
     font-size: 2rem;
     line-height: 1.2;
     margin-bottom: 0.3rem;
-    color: var(--background);
+    color: var(--sub-header);
     padding-top: 0;
 }
 .about-section-content {
     font-family: 'Poppins', sans-serif;
     font-size: 1.1rem;
     line-height: 1.5;
-    color: var(--background, #333);
+    color: var(--sub-header, #333);
     padding-left: 1rem;
     padding-right: 1rem;
     padding-bottom: 0;

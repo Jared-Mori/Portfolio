@@ -45,7 +45,7 @@
         --tag-text: #220901;
         --grid-bg: #AEC8A4;
         --grid-line: #798b71;
-        --sidebar-bg: #ba181b;
+        --sidebar-bg: #f0fff1; /* #ba181b */
         --sidebar-text: #fff;
         --about-bg: #720f12;
         --about-bg-hover: #881317;

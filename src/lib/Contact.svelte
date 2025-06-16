@@ -44,21 +44,25 @@
     font-weight: 500;
     font-family: 'Poppins', sans-serif;
     font-size: 1.3rem;
-    color: var(--background);
+    color: var(--sub-header);
 }
 .contact-form input,
 .contact-form textarea {
     padding: 1.5rem;
     border-radius: 8px;
-    border: 2px solid var(--background);
+    border: 2px solid var(--header);
     background-color: var(--background);
-    color: var(--background);
+    color: var(--sub-header);
     font-size: 1.3rem;
     font-family: 'Poppins', sans-serif;
 }
 .contact-form textarea {
     min-height: 180px;
     resize: vertical;
+}
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
 }
 .contact-form button {
     background: var(--grid-bg);

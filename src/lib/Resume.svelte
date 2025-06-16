@@ -17,7 +17,7 @@
     }
     const email = "jared@mori.us";
     const phone = "310-801-5171";
-    const profile = "Recent Computer Science graduate with hands-on experience developing C++ and Python applications during an internship at Lockheed Martin. Also experienced in web development through personal and academic projects. Skilled in software engineering, version control, and collaborative development. Eager to contribute to impactful software and web-based projects in a dynamic, team-focused environment.";
+    const profile = "Computer Science graduate with experience building C++ and Python applications at Lockheed Martin and developing web projects in academic and personal settings. Skilled in software engineering, version control, and team-based development. Eager to contribute to impactful software and web-based work.";
 </script>
 
 <div class="resume-container">
@@ -131,22 +131,23 @@
             <h2>WORK EXPERIENCE</h2>
             <hr class="resume-divider" />
             <div class="column-two-content">
-                <p>--- MAY - AUGUST 2023 ---</p>
                 <p>SOFTWARE ENGINEERING INTERN, LOCKHEED MARTIN SPACE</p>
+                <p>--- MAY - AUGUST 2023 ---</p>
                 <ul>
-                    <li>Contributed production-level C++ code to a large-scale software project for Lockheed Martin Space.</li>
-                    <li>Developed and maintained automated tests using Python to validate new features.</li>
-                    <li>Collaborated in Agile team meetings, code reviews, and sprint plannings.</li>
+                    <li>Developed a C++ software component that simulates a satellite hardware unit, contributing to a production-level system used in spacecraft simulations at Lockheed Martin Space.</li>
+                    <li>Developed and maintained Python-based automated tests to validate the functionality of the satellite hardware simulation component.</li>
+                    <li>Wrote clear, maintainable code with thorough documentation, following best practices for quality, modularity, and seamless integration into existing simulation environments.</li>
+                    <li>Contributed using industry-standard practices, including version control with Git, task tracking with JIRA, and documentation with Confluence, within an Agile team and CI/CD workflow.</li>
                 </ul>
-                <p>--- 2021 - 2022 SCHOOL YEAR ---</p>
                 <p>AVID TUTOR, PALOS VERDES PENINSULA HIGH SCHOOL</p>
+                <p>--- 2021 - 2022 SCHOOL YEAR ---</p>
                 <ul>
                     <li>Led tutoring sessions in math and science for small student groups (4-6 students)</li>
                     <li>Encouraged and facilitated collaboration and peer-to-peer learning</li>
                     <li>Assisted teachers in student study group placements and evaluated student work.</li>
                 </ul>
-                <p>--- 2019 - 2020 ---</p>
                 <p>INSTRUCTOR, MATHNASIUM</p>
+                <p>--- 2019 - 2020 ---</p>
                 <ul>
                     <li>Tutored math to 5–12 students from elementary to high school levels.</li>
                     <li>Assigned and graded worksheets tailored to individual learning levels.</li>
@@ -187,9 +188,9 @@
 <style>
 .resume-container {
     display: flex;
-    margin-top: 3rem;
+    margin-top: 1rem;
     align-items: flex-start;
-    height: 80vh;
+    height: 85vh;
     width: 70%;
     z-index: 4;
     border-radius: 12px;
@@ -218,13 +219,13 @@
     font-weight: 500;
     font-size: 1.9rem;
     margin-bottom: 0;
-    color: var(--background);
+    color: var(--sub-header);
 }
 .column-one-content {
     font-family: 'Poppins', sans-serif;
     font-size: 1rem;
     line-height: 1;
-    color: var(--background, #333);
+    color: var(--sub-header);
     padding-left: 1rem;
     padding-right: 1rem;
     padding-top: .4rem;
@@ -248,7 +249,7 @@
     font-family: 'Poppins', sans-serif;
     font-size: 1.1rem;
     line-height: 1.5;
-    color: var(--background, #333);
+    color: var(--sub-header, #333);
     padding-left: 1rem;
     padding-right: 1rem;
 }
@@ -263,15 +264,16 @@
     text-align: left;
 }
 .column-two-content ul {
-    list-style-type: none;
+    list-style-type: default;
     padding: 0;
+    padding-left: .1rem;
     margin: 0rem;
     margin-bottom: 0;
 }
 .column-two-content li {
     font-size: .9rem;
     text-align: left;
-    margin-bottom: 0.2rem;
+    margin-bottom: 0.4rem;
 }
 .reference-container {
     display: flex;
@@ -286,10 +288,10 @@
     text-align: left;
 }
 .resume-section.work-experience .column-two-content {
-    height: 330px;
+    height: 40vh;
     overflow-y: auto;
     width: 100%;
-    background-color: rgba(156, 51, 51, 0.459);
+    /* background-color: rgba(156, 51, 51, 0.459); */
 }
 .resume-section.work-experience .column-two-content::-webkit-scrollbar {
     width: 8px;
@@ -322,7 +324,7 @@
     width: 32px;
     height: 32px;
     object-fit: cover;
-    filter: invert(97%) sepia(6%) saturate(300%) hue-rotate(62deg) brightness(104%) contrast(97%);
+    filter: invert(17%) sepia(99%) saturate(7492%) hue-rotate(353deg) brightness(65%) contrast(110%);
 }
 button {
     background: none;
